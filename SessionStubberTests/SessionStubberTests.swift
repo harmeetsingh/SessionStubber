@@ -13,29 +13,22 @@ class SessionStubberTests: XCTestCase {
 
     // MARK: Properties
     
-    // MARK: Lifecycle
-    
-    override func setUp() {
-        
-        super.setUp()
-        
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
+    var sessionStubber = SessionStubber.sharedSession()
+}
+
+// MARK: Data Task Tests
+
+extension SessionStubberTests {
+
     func testExample() {
     
         let expectation = expectationWithDescription("")
         
         let response = NSHTTPURLResponse(URL: NSURL(), statusCode: 600, HTTPVersion: "1.1", headerFields: nil)
-        
-        CustomURLSession.dataTaskResponse = (data: NSData(), response: response, error: nil)
+        SessionStubber.dataTaskResponse = (data: NSData(), response: response, error: nil)
         
         let url = NSURL(string: "www.stackoverflow.com")
-        let session = CustomURLSession.sharedSession()
+        let session = SessionStubber.sharedSession()
         
         session.dataTaskWithURL(url!) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
             
@@ -43,6 +36,5 @@ class SessionStubberTests: XCTestCase {
             expectation.fulfill()
             
         }.resume()
-
     }
 }

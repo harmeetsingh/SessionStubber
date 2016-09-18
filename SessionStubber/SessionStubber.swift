@@ -17,7 +17,7 @@ extension NSObject {
     typealias DownloadTaskResponse = (url: NSURL?, response: NSURLResponse?, error: NSError?)
 }
 
-class CustomURLSession: NSURLSession {
+class SessionStubber: NSURLSession {
     
     // MARK: Properties
     
@@ -28,13 +28,13 @@ class CustomURLSession: NSURLSession {
     // MARK: Override functions
     
     override class func sharedSession() -> NSURLSession {
-        return CustomURLSession()
+        return SessionStubber()
     }
 }
 
 // MARK: Data Tasks
 
-extension CustomURLSession {
+extension SessionStubber {
     
     override func dataTaskWithRequest(request: NSURLRequest, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
 
@@ -43,13 +43,13 @@ extension CustomURLSession {
     
     override func dataTaskWithURL(url: NSURL, completionHandler: (data: NSData?, urlResponse: NSURLResponse?, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
-        return CustomDataTask(response: CustomURLSession.dataTaskResponse, completionHandler: completionHandler)
+        return CustomDataTask(response: SessionStubber.dataTaskResponse, completionHandler: completionHandler)
     }
 }
 
 // MARK: Upload Tasks
 
-extension CustomURLSession {
+extension SessionStubber {
     
     override func uploadTaskWithRequest(request: NSURLRequest, fromFile fileURL: NSURL, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionUploadTask {
         
@@ -64,7 +64,7 @@ extension CustomURLSession {
 
 // MARK: Download Tasks
 
-extension CustomURLSession {
+extension SessionStubber {
 
     override func downloadTaskWithRequest(request: NSURLRequest, completionHandler: (NSURL?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDownloadTask  {
         
