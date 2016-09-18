@@ -11,7 +11,9 @@
 		5A56B5A21D8F012700DB6EB3 /* SessionStubber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A56B5971D8F012700DB6EB3 /* SessionStubber.framework */; };
 		5A56B5A71D8F012700DB6EB3 /* SessionStubberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5A61D8F012700DB6EB3 /* SessionStubberTests.swift */; };
 		5A56B5B21D8F01DD00DB6EB3 /* CustomURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5B11D8F01DD00DB6EB3 /* CustomURLProtocol.swift */; };
-		5A56B5B41D8F06EF00DB6EB3 /* CustomURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5B31D8F06EF00DB6EB3 /* CustomURLSessionDataTask.swift */; };
+		5A56B5B41D8F06EF00DB6EB3 /* CustomDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5B31D8F06EF00DB6EB3 /* CustomDataTask.swift */; };
+		5A56B5B71D8F157600DB6EB3 /* CustomURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5B11D8F01DD00DB6EB3 /* CustomURLProtocol.swift */; };
+		5A56B5B81D8F158300DB6EB3 /* CustomDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5B31D8F06EF00DB6EB3 /* CustomDataTask.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +34,7 @@
 		5A56B5A61D8F012700DB6EB3 /* SessionStubberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStubberTests.swift; sourceTree = "<group>"; };
 		5A56B5A81D8F012700DB6EB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A56B5B11D8F01DD00DB6EB3 /* CustomURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomURLProtocol.swift; sourceTree = "<group>"; };
-		5A56B5B31D8F06EF00DB6EB3 /* CustomURLSessionDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomURLSessionDataTask.swift; sourceTree = "<group>"; };
+		5A56B5B31D8F06EF00DB6EB3 /* CustomDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDataTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				5A56B5B11D8F01DD00DB6EB3 /* CustomURLProtocol.swift */,
-				5A56B5B31D8F06EF00DB6EB3 /* CustomURLSessionDataTask.swift */,
+				5A56B5B31D8F06EF00DB6EB3 /* CustomDataTask.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -216,7 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A56B5B41D8F06EF00DB6EB3 /* CustomURLSessionDataTask.swift in Sources */,
+				5A56B5B41D8F06EF00DB6EB3 /* CustomDataTask.swift in Sources */,
 				5A56B5B21D8F01DD00DB6EB3 /* CustomURLProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,7 +227,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A56B5B71D8F157600DB6EB3 /* CustomURLProtocol.swift in Sources */,
 				5A56B5A71D8F012700DB6EB3 /* SessionStubberTests.swift in Sources */,
+				5A56B5B81D8F158300DB6EB3 /* CustomDataTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
