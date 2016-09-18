@@ -59,9 +59,9 @@
 		5A56B58D1D8F012700DB6EB3 = {
 			isa = PBXGroup;
 			children = (
+				5A56B5981D8F012700DB6EB3 /* Products */,
 				5A56B5991D8F012700DB6EB3 /* SessionStubber */,
 				5A56B5A51D8F012700DB6EB3 /* SessionStubberTests */,
-				5A56B5981D8F012700DB6EB3 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,8 +86,8 @@
 		5A56B5A51D8F012700DB6EB3 /* SessionStubberTests */ = {
 			isa = PBXGroup;
 			children = (
-				5A56B5BA1D8F266000DB6EB3 /* Supporting Files */,
 				5A56B5B91D8F264D00DB6EB3 /* SourcesTests */,
+				5A56B5BA1D8F266000DB6EB3 /* Supporting Files */,
 			);
 			path = SessionStubberTests;
 			sourceTree = "<group>";
@@ -95,10 +95,10 @@
 		5A56B5B51D8F070600DB6EB3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5A56B59A1D8F012700DB6EB3 /* SessionStubber.h */,
 				5A56B59C1D8F012700DB6EB3 /* Info.plist */,
+				5A56B59A1D8F012700DB6EB3 /* SessionStubber.h */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		5A56B5B61D8F070D00DB6EB3 /* Sources */ = {
@@ -107,23 +107,23 @@
 				5A56B5BB1D8F26E300DB6EB3 /* SessionStubber */,
 				5A56B5BC1D8F26E700DB6EB3 /* Tasks */,
 			);
-			name = Sources;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		5A56B5B91D8F264D00DB6EB3 /* SourcesTests */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = SourcesTests;
+			path = SourcesTests;
 			sourceTree = "<group>";
 		};
 		5A56B5BA1D8F266000DB6EB3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5A56B5A61D8F012700DB6EB3 /* SessionStubberTests.swift */,
 				5A56B5A81D8F012700DB6EB3 /* Info.plist */,
+				5A56B5A61D8F012700DB6EB3 /* SessionStubberTests.swift */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		5A56B5BB1D8F26E300DB6EB3 /* SessionStubber */ = {
@@ -131,7 +131,7 @@
 			children = (
 				5A56B5B11D8F01DD00DB6EB3 /* SessionStubber.swift */,
 			);
-			name = SessionStubber;
+			path = SessionStubber;
 			sourceTree = "<group>";
 		};
 		5A56B5BC1D8F26E700DB6EB3 /* Tasks */ = {
@@ -139,7 +139,7 @@
 			children = (
 				5A56B5B31D8F06EF00DB6EB3 /* CustomDataTask.swift */,
 			);
-			name = Tasks;
+			path = Tasks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,7 +375,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SessionStubber/Info.plist;
+				INFOPLIST_FILE = "SessionStubber/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harmeetsingh.SessionStubber;
@@ -393,7 +393,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SessionStubber/Info.plist;
+				INFOPLIST_FILE = "SessionStubber/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harmeetsingh.SessionStubber;
@@ -405,7 +405,7 @@
 		5A56B5AF1D8F012700DB6EB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = SessionStubberTests/Info.plist;
+				INFOPLIST_FILE = "SessionStubberTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harmeetsingh.SessionStubberTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -415,7 +415,7 @@
 		5A56B5B01D8F012700DB6EB3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = SessionStubberTests/Info.plist;
+				INFOPLIST_FILE = "SessionStubberTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.harmeetsingh.SessionStubberTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
