@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Example.xcscheme</key>
+		<key>SessionStubber.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>5A56B5771D8EFFBE00DB6EB3</key>
+		<key>5A56B5961D8F012700DB6EB3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5A56B5A01D8F012700DB6EB3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
