@@ -10,10 +10,15 @@ import XCTest
 @testable import SessionStubber
 
 class SessionStubberTests: XCTestCase {
+
+    // MARK: Properties
+    
+    // MARK: Lifecycle
     
     override func setUp() {
+        
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
     }
     
     override func tearDown() {
@@ -22,15 +27,22 @@ class SessionStubberTests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
+        let expectation = expectationWithDescription("")
+        
+        let response = NSHTTPURLResponse(URL: NSURL(), statusCode: 600, HTTPVersion: "1.1", headerFields: nil)
+        
+        CustomURLSession.dataTaskResponse = (data: NSData(), response: response, error: nil)
+        
+        let url = NSURL(string: "www.stackoverflow.com")
+        let session = CustomURLSession.sharedSession()
+        
+        session.dataTaskWithURL(url!) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
+            
+            XCTAssertNotNil(data)
+            expectation.fulfill()
+            
+        }.resume()
+
     }
-    
 }
