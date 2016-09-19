@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		5A56B59B1D8F012700DB6EB3 /* SessionStubber.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A56B59A1D8F012700DB6EB3 /* SessionStubber.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5A56B5A21D8F012700DB6EB3 /* SessionStubber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A56B5971D8F012700DB6EB3 /* SessionStubber.framework */; };
-		5A56B5A71D8F012700DB6EB3 /* SessionStubberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5A61D8F012700DB6EB3 /* SessionStubberTests.swift */; };
 		5A56B5B21D8F01DD00DB6EB3 /* SessionStubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5B11D8F01DD00DB6EB3 /* SessionStubber.swift */; };
 		5A56B5B41D8F06EF00DB6EB3 /* CustomDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5B31D8F06EF00DB6EB3 /* CustomDataTask.swift */; };
-		5A56B5B71D8F157600DB6EB3 /* SessionStubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5B11D8F01DD00DB6EB3 /* SessionStubber.swift */; };
 		5A56B5B81D8F158300DB6EB3 /* CustomDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5B31D8F06EF00DB6EB3 /* CustomDataTask.swift */; };
+		5A56B5BE1D8F32D700DB6EB3 /* SessionStubberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5BD1D8F32D700DB6EB3 /* SessionStubberTests.swift */; };
+		5AB44AF41D8FEE6D0095A2E2 /* NSObject+SessionStubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB44AF31D8FEE6D0095A2E2 /* NSObject+SessionStubber.swift */; };
+		5AB44AF51D9000230095A2E2 /* NSObject+SessionStubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB44AF31D8FEE6D0095A2E2 /* NSObject+SessionStubber.swift */; };
+		5AB44AF61D9008350095A2E2 /* SessionStubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5B11D8F01DD00DB6EB3 /* SessionStubber.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,10 +33,11 @@
 		5A56B59A1D8F012700DB6EB3 /* SessionStubber.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionStubber.h; sourceTree = "<group>"; };
 		5A56B59C1D8F012700DB6EB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A56B5A11D8F012700DB6EB3 /* SessionStubberTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SessionStubberTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A56B5A61D8F012700DB6EB3 /* SessionStubberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStubberTests.swift; sourceTree = "<group>"; };
 		5A56B5A81D8F012700DB6EB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A56B5B11D8F01DD00DB6EB3 /* SessionStubber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStubber.swift; sourceTree = "<group>"; };
 		5A56B5B31D8F06EF00DB6EB3 /* CustomDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDataTask.swift; sourceTree = "<group>"; };
+		5A56B5BD1D8F32D700DB6EB3 /* SessionStubberTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStubberTests.swift; sourceTree = "<group>"; };
+		5AB44AF31D8FEE6D0095A2E2 /* NSObject+SessionStubber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+SessionStubber.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,7 @@
 		5A56B5B61D8F070D00DB6EB3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				5AB44AF21D8FEE540095A2E2 /* Extensions */,
 				5A56B5BB1D8F26E300DB6EB3 /* SessionStubber */,
 				5A56B5BC1D8F26E700DB6EB3 /* Tasks */,
 			);
@@ -113,6 +117,7 @@
 		5A56B5B91D8F264D00DB6EB3 /* SourcesTests */ = {
 			isa = PBXGroup;
 			children = (
+				5A56B5BD1D8F32D700DB6EB3 /* SessionStubberTests.swift */,
 			);
 			path = SourcesTests;
 			sourceTree = "<group>";
@@ -121,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				5A56B5A81D8F012700DB6EB3 /* Info.plist */,
-				5A56B5A61D8F012700DB6EB3 /* SessionStubberTests.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -140,6 +144,14 @@
 				5A56B5B31D8F06EF00DB6EB3 /* CustomDataTask.swift */,
 			);
 			path = Tasks;
+			sourceTree = "<group>";
+		};
+		5AB44AF21D8FEE540095A2E2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5AB44AF31D8FEE6D0095A2E2 /* NSObject+SessionStubber.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +264,7 @@
 			files = (
 				5A56B5B41D8F06EF00DB6EB3 /* CustomDataTask.swift in Sources */,
 				5A56B5B21D8F01DD00DB6EB3 /* SessionStubber.swift in Sources */,
+				5AB44AF41D8FEE6D0095A2E2 /* NSObject+SessionStubber.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,9 +272,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A56B5B71D8F157600DB6EB3 /* SessionStubber.swift in Sources */,
-				5A56B5A71D8F012700DB6EB3 /* SessionStubberTests.swift in Sources */,
 				5A56B5B81D8F158300DB6EB3 /* CustomDataTask.swift in Sources */,
+				5AB44AF51D9000230095A2E2 /* NSObject+SessionStubber.swift in Sources */,
+				5AB44AF61D9008350095A2E2 /* SessionStubber.swift in Sources */,
+				5A56B5BE1D8F32D700DB6EB3 /* SessionStubberTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

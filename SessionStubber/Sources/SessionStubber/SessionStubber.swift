@@ -8,26 +8,18 @@
 
 import Foundation
 
-extension NSObject {
-    
-    // MARK: Typealias
-
-    typealias DataTaskResponse = (data: NSData?, response: NSURLResponse?, error: NSError?)
-    typealias UploadTaskResponse = (data: NSData?, response: NSURLResponse?, error: NSError?)
-    typealias DownloadTaskResponse = (url: NSURL?, response: NSURLResponse?, error: NSError?)
-}
-
-class SessionStubber: NSURLSession {
+public class SessionStubber: NSURLSession {
     
     // MARK: Properties
     
-    static var dataTaskResponse: DataTaskResponse?
-    static var uploadTaskResponse: UploadTaskResponse?
-    static var downloadTaskResponse: DownloadTaskResponse?
-    
+    private var mockDataTaskResponse: DataTaskResponse?
+    private var mockUploadTaskResponse: UploadTaskResponse?
+    private var mockDownloadTaskResponse: DownloadTaskResponse?
+
     // MARK: Override functions
     
-    override class func sharedSession() -> NSURLSession {
+    override public class func sharedSession() -> SessionStubber {
+        
         return SessionStubber()
     }
 }
@@ -36,14 +28,40 @@ class SessionStubber: NSURLSession {
 
 extension SessionStubber {
     
-    override func dataTaskWithRequest(request: NSURLRequest, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
+    override public func dataTaskWithRequest(request: NSURLRequest, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
 
         return NSURLSessionDataTask()
     }
     
-    override func dataTaskWithURL(url: NSURL, completionHandler: (data: NSData?, urlResponse: NSURLResponse?, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    override public func dataTaskWithURL(url: NSURL, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
         
-        return CustomDataTask(response: SessionStubber.dataTaskResponse, completionHandler: completionHandler)
+        return CustomDataTask(response: mockDataTaskResponse, completionHandler: completionHandler)
+    }
+}
+
+// MARK: Data Task Stubs
+
+extension SessionStubber {
+    
+    public func stubDataTask(_withData data: NSData?, response: NSURLResponse, error: NSError?) {
+        
+        mockDataTaskResponse = (data: data, response: response, error: error)
+    }
+    
+    public func stubDataTask(_withData data: NSData?, url: NSURL, statusCode: NSInteger) {
+        
+        stubDataTask(_withData: data, url: url, statusCode: statusCode, httpVersion: nil, headerFields: nil)
+    }
+    
+    public func stubDataTask(_withData data: NSData?, url: NSURL, statusCode: NSInteger, httpVersion: String?, headerFields: [String : String]?) {
+        
+        let response = NSHTTPURLResponse(URL: url, statusCode: statusCode, HTTPVersion: httpVersion, headerFields: headerFields)
+        mockDataTaskResponse = (data: data, response: response, error: nil)
+    }
+    
+    internal func stubDataTaskWithError(error: NSError?) {
+        
+        mockDataTaskResponse = (data: nil, response: nil, error: error)
     }
 }
 
@@ -51,12 +69,12 @@ extension SessionStubber {
 
 extension SessionStubber {
     
-    override func uploadTaskWithRequest(request: NSURLRequest, fromFile fileURL: NSURL, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionUploadTask {
+    override public func uploadTaskWithRequest(request: NSURLRequest, fromFile fileURL: NSURL, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionUploadTask {
         
         return NSURLSessionUploadTask()        
     }
     
-    override func uploadTaskWithRequest(request: NSURLRequest, fromData bodyData: NSData?, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionUploadTask {
+    override public func uploadTaskWithRequest(request: NSURLRequest, fromData bodyData: NSData?, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionUploadTask {
         
         return NSURLSessionUploadTask()
     }
@@ -66,17 +84,17 @@ extension SessionStubber {
 
 extension SessionStubber {
 
-    override func downloadTaskWithRequest(request: NSURLRequest, completionHandler: (NSURL?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDownloadTask  {
+    override public func downloadTaskWithRequest(request: NSURLRequest, completionHandler: (NSURL?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDownloadTask  {
         
         return NSURLSessionDownloadTask()
     }
     
-    override func downloadTaskWithURL(url: NSURL, completionHandler: (NSURL?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDownloadTask {
+    override public func downloadTaskWithURL(url: NSURL, completionHandler: (NSURL?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDownloadTask {
         
         return NSURLSessionDownloadTask()
     }
     
-    override func downloadTaskWithResumeData(resumeData: NSData, completionHandler: (NSURL?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDownloadTask {
+    override public func downloadTaskWithResumeData(resumeData: NSData, completionHandler: (NSURL?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDownloadTask {
         
         return NSURLSessionDownloadTask()
     }
