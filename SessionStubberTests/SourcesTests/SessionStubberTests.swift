@@ -261,7 +261,7 @@ extension SessionStubberTests {
             let httpURLResponse = response as? NSHTTPURLResponse
             let headerFields = httpURLResponse?.allHeaderFields
             
-            XCTAssertNotNil(httpURLResponse, "httpURLResponse should not be nil")
+            XCTAssertNotNil(headerFields, "headerFields should not be nil")
             expectation.fulfill()
             
         }.resume()
