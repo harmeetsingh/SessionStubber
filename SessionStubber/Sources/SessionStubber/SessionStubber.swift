@@ -43,23 +43,22 @@ extension SessionStubber {
 
 extension SessionStubber {
     
-    public func stubDataTask(_withData data: NSData?, response: NSURLResponse, error: NSError?) {
+    public func stubDataTask(_withData data: NSData?, response: NSURLResponse?, error: NSError?) {
         
         mockDataTaskResponse = (data: data, response: response, error: error)
     }
-    
-    public func stubDataTask(_withData data: NSData?, url: NSURL, statusCode: NSInteger) {
+
+    public func stubDataTask(_withData data: NSData?) {
         
-        stubDataTask(_withData: data, url: url, statusCode: statusCode, httpVersion: nil, headerFields: nil)
+        mockDataTaskResponse = (data: data, response: nil, error: nil)
     }
     
-    public func stubDataTask(_withData data: NSData?, url: NSURL, statusCode: NSInteger, httpVersion: String?, headerFields: [String : String]?) {
+    public func stubDataTask(_withResponse response: NSURLResponse?) {
         
-        let response = NSHTTPURLResponse(URL: url, statusCode: statusCode, HTTPVersion: httpVersion, headerFields: headerFields)
-        mockDataTaskResponse = (data: data, response: response, error: nil)
+        mockDataTaskResponse = (data: nil, response: response, error: nil)
     }
     
-    internal func stubDataTaskWithError(error: NSError?) {
+    public func stubDataTask(_withError error: NSError?) {
         
         mockDataTaskResponse = (data: nil, response: nil, error: error)
     }
