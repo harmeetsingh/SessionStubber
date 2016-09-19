@@ -27,7 +27,7 @@ class SessionStubberTests: XCTestCase {
         guard let url = NSURL(string: "www.random.test.webstie.com/random") else {
             return nil
         }
-        return NSURLResponse(URL: url, MIMEType: "", expectedContentLength: 20, textEncodingName: "")
+        return NSURLResponse(URL: url, MIMEType: "mp3", expectedContentLength: 20000, textEncodingName: "UTF-8")
     }()
     
     let randomHTTPURLResponse: NSHTTPURLResponse? = {
@@ -48,6 +48,13 @@ class SessionStubberTests: XCTestCase {
         
         return NSError(domain: "www.harmeetsingh.superError", code: -1000, userInfo: ["profileId" : "1234"])
     }()
+    
+    // MARK: Lifecycle
+    
+    func testSessionStubber_NotNil(){
+        
+        XCTAssertNotNil(sessionStubber, "sessionStubber should not be nil")
+    }
 }
 
 // MARK: Data Task Tests
@@ -104,6 +111,93 @@ extension SessionStubberTests {
         
         waitForExpectationsWithTimeout(0.2, handler: nil)
     }
+    
+    func testDataTaskWithURL_MockResponse_ResponseMIMETypeNotNil() {
+        
+        let expectation = expectationWithDescription("testDataTaskWithURL_MockResponse_ResponseMIMETypeNotNil")
+        sessionStubber.stubDataTask(_withResponse: randomURLResponse)
+        
+        sessionStubber.dataTaskWithURL(randomURL) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
+            
+            let mimeType = response?.MIMEType
+            
+            XCTAssertNotNil(mimeType, "url should not be nil")
+            expectation.fulfill()
+            
+        }.resume()
+        
+        waitForExpectationsWithTimeout(0.2, handler: nil)
+    }
+    
+    func testDataTaskWithURL_MockResponse_ResponseMIMETypeCorrectValue() {
+        
+        let expectation = expectationWithDescription("testDataTaskWithURL_MockResponse_ResponseMIMETypeNotNil")
+        sessionStubber.stubDataTask(_withResponse: randomURLResponse)
+        
+        sessionStubber.dataTaskWithURL(randomURL) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
+            
+            let mimeType = response?.MIMEType
+            
+            XCTAssertEqual(mimeType, "mp3", "url should be 'mp3'")
+            expectation.fulfill()
+            
+        }.resume()
+        
+        waitForExpectationsWithTimeout(0.2, handler: nil)
+    }
+    
+    func testDataTaskWithURL_MockResponse_ResponseExpectedContentLengthCorrectValue() {
+        
+        let expectation = expectationWithDescription("testDataTaskWithURL_MockResponse_ResponseExpectedContentLengthCorrectValue")
+        sessionStubber.stubDataTask(_withResponse: randomURLResponse)
+        
+        sessionStubber.dataTaskWithURL(randomURL) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
+            
+            let expectedContentLength = response?.expectedContentLength
+            
+            XCTAssertEqual(expectedContentLength, 20000, "expectedContentLength should be 20000")
+            expectation.fulfill()
+            
+        }.resume()
+        
+        waitForExpectationsWithTimeout(0.2, handler: nil)
+    }
+    
+    func testDataTaskWithURL_MockResponse_ResponseTextEncodingNameNotNil() {
+        
+        let expectation = expectationWithDescription("testDataTaskWithURL_MockResponse_ResponseTextEncodingNameNotNil")
+        sessionStubber.stubDataTask(_withResponse: randomURLResponse)
+        
+        sessionStubber.dataTaskWithURL(randomURL) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
+            
+            let textEncodingName = response?.textEncodingName
+            
+            XCTAssertNotNil(textEncodingName, "textEncodingName should not be nil")
+            expectation.fulfill()
+            
+        }.resume()
+        
+        waitForExpectationsWithTimeout(0.2, handler: nil)
+    }
+    
+    func testDataTaskWithURL_MockResponse_ResponseTextEncodingNameCorrectValue() {
+        
+        let expectation = expectationWithDescription("testDataTaskWithURL_MockResponse_ResponseTextEncodingNameCorrectValue")
+        sessionStubber.stubDataTask(_withResponse: randomURLResponse)
+        
+        sessionStubber.dataTaskWithURL(randomURL) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
+            
+            let textEncodingName = response?.textEncodingName
+            
+            XCTAssertEqual(textEncodingName, "UTF-8", "url should be 'UTF-8'")
+            expectation.fulfill()
+            
+        }.resume()
+        
+        waitForExpectationsWithTimeout(0.2, handler: nil)
+    }
+    
+    // MARK: Mock Response - NSHTTPURLResponse
     
     func testDataTaskWithURL_MockResponse_ResponseStatusCodeCorrectValue() {
         
@@ -302,12 +396,4 @@ extension SessionStubberTests {
         
         waitForExpectationsWithTimeout(0.2, handler: nil)
     }
-    
-}
-
-// MARK: Helpers
-
-extension SessionStubberTests {
-    
-
 }
