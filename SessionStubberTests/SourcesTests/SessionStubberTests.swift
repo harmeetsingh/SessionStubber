@@ -199,6 +199,40 @@ extension SessionStubberTests {
     
     // MARK: Mock Response - NSHTTPURLResponse
     
+    func testDataTaskWithURL_MockHTTPURLResponse_ResponseURLNotNil() {
+        
+        let expectation = expectationWithDescription("testDataTaskWithURL_MockHTTPURLResponse_ResponseURLNotNil")
+        sessionStubber.stubDataTask(_withResponse: randomURLResponse)
+        
+        sessionStubber.dataTaskWithURL(randomURL) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
+            
+            let url = response?.URL
+            
+            XCTAssertNotNil(url, "url should not be nil")
+            expectation.fulfill()
+            
+        }.resume()
+        
+        waitForExpectationsWithTimeout(0.2, handler: nil)
+    }
+    
+    func testDataTaskWithURL_MockHTTPURLResponse_ResponseURLCorrectValue() {
+        
+        let expectation = expectationWithDescription("testDataTaskWithURL_MockHTTPURLResponse_ResponseURLCorrectValue")
+        sessionStubber.stubDataTask(_withResponse: randomURLResponse)
+        
+        sessionStubber.dataTaskWithURL(randomURL) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
+            
+            let urlString = response?.URL?.absoluteString
+            
+            XCTAssertEqual(urlString, "www.random.test.webstie.com/random", "url should be 'www.random.test.webstie.com/random'")
+            expectation.fulfill()
+            
+        }.resume()
+        
+        waitForExpectationsWithTimeout(0.2, handler: nil)
+    }
+    
     func testDataTaskWithURL_MockHTTPURLResponse_ResponseStatusCodeCorrectValue() {
         
         let expectation = expectationWithDescription("testDataTaskWithURL_MockHTTPURLResponse_ResponseStatusCodeCorrectValue")
@@ -217,24 +251,60 @@ extension SessionStubberTests {
         waitForExpectationsWithTimeout(0.2, handler: nil)
     }
     
-//    
-//    func testDataTaskWithURL_MockHTTPURLResponse_ResponseStatusCodeCorrectValue() {
-//        
-//        let expectation = expectationWithDescription("testDataTaskWithURL_MockResponse_ResponseStatusCodeCorrectValue")
-//        sessionStubber.stubDataTask(_withResponse: randomHTTPURLResponse)testDataTaskWithURL_MockHTTPURLResponse_ResponseStatusCodeCorrectValue
-//        sessionStubber.dataTaskWithURL(randomURL) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
-//            
-//            let httpURLresponse = response as? NSHTTPURLResponse
-//            let statusCode = httpURLresponse?.statusCode
-//            
-//            XCTAssertEqual(statusCode, 200, "statusCode should be 200")
-//            expectation.fulfill()
-//            
-//            }.resume()
-//        
-//        waitForExpectationsWithTimeout(0.2, handler: nil)
-//    }
-//    
+    func testDataTaskWithURL_MockHTTPURLResponse_ResponseHeaderFieldsNotNil() {
+        
+        let expectation = expectationWithDescription("testDataTaskWithURL_MockHTTPURLResponse_ResponseHeaderFieldsNotNil")
+        sessionStubber.stubDataTask(_withResponse: randomHTTPURLResponse)
+        
+        sessionStubber.dataTaskWithURL(randomURL) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
+            
+            let httpURLResponse = response as? NSHTTPURLResponse
+            let headerFields = httpURLResponse?.allHeaderFields
+            
+            XCTAssertNotNil(httpURLResponse, "httpURLResponse should not be nil")
+            expectation.fulfill()
+            
+        }.resume()
+        
+        waitForExpectationsWithTimeout(0.2, handler: nil)
+    }
+    
+    func testDataTaskWithURL_MockHTTPURLResponse_ResponseHeaderFieldsCorrectCount() {
+        
+        let expectation = expectationWithDescription("testDataTaskWithURL_MockError_ErrorUserInfoCorrectCount")
+        sessionStubber.stubDataTask(_withResponse: randomHTTPURLResponse)
+        
+        sessionStubber.dataTaskWithURL(randomURL) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
+            
+            let httpURLResponse = response as? NSHTTPURLResponse
+            let headerFieldsCount = httpURLResponse?.allHeaderFields.count
+            
+            XCTAssertEqual(headerFieldsCount, 1, "headerFieldsCount should be 1")
+            expectation.fulfill()
+            
+        }.resume()
+        
+        waitForExpectationsWithTimeout(0.2, handler: nil)
+    }
+    
+    func testDataTaskWithURL_MockHTTPURLResponse_ResponseHeaderFieldsCorrectValue() {
+        
+        let expectation = expectationWithDescription("testDataTaskWithURL_MockHTTPURLResponse_ResponseHeaderFieldsCorrectValue")
+        sessionStubber.stubDataTask(_withResponse: randomHTTPURLResponse)
+        
+        sessionStubber.dataTaskWithURL(randomURL) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
+            
+            let httpURLResponse = response as? NSHTTPURLResponse
+            let mobileIdValue = httpURLResponse?.allHeaderFields["mobileId"] as? String
+            
+            XCTAssertEqual(mobileIdValue, "0987654321", "mobileIdValue should be 0987654321")
+            expectation.fulfill()
+            
+        }.resume()
+        
+        waitForExpectationsWithTimeout(0.2, handler: nil)
+    }
+    
     // MARK: Mock Data
     
     func testDataTaskWithURL_MockData_DataNotNil() {
