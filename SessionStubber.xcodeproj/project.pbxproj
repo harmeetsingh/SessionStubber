@@ -62,9 +62,9 @@
 		5A56B58D1D8F012700DB6EB3 = {
 			isa = PBXGroup;
 			children = (
-				5A56B5981D8F012700DB6EB3 /* Products */,
 				5A56B5991D8F012700DB6EB3 /* SessionStubber */,
 				5A56B5A51D8F012700DB6EB3 /* SessionStubberTests */,
+				5A56B5981D8F012700DB6EB3 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
