@@ -13,7 +13,7 @@ class CustomDataTask: NSURLSessionDataTask {
     // MARK: Properties
     
     var customResponse: DataTaskResponse?
-    let completionHandler: ((NSData!, NSURLResponse!, NSError!) -> Void)?
+    let completionHandler: ((NSData?, NSURLResponse?, NSError?) -> Void)?
     
     // MARK: Lifeycle
     
