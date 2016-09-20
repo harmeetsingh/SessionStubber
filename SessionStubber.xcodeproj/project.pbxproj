@@ -151,7 +151,7 @@
 			children = (
 				5AB44AF31D8FEE6D0095A2E2 /* NSObject+SessionStubber.swift */,
 			);
-			name = Extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
