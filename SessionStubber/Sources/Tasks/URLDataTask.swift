@@ -1,5 +1,5 @@
 //
-//  CustomDataTask.swift
+//  URLDataTask.swift
 //  SessionStubber
 //
 //  Created by Harmeet Singh on 18/09/2016.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-class CustomDataTask: NSURLSessionDataTask {
+class URLDataTask: NSURLSessionDataTask {
     
     // MARK: Properties
     
-    var customResponse: DataTaskResponse?
-    let completionHandler: ((NSData?, NSURLResponse?, NSError?) -> Void)?
+    private var customResponse: DataTaskResponse?
+    private let completionHandler: ((NSData?, NSURLResponse?, NSError?) -> Void)?
     
     // MARK: Lifeycle
     
@@ -26,7 +26,7 @@ class CustomDataTask: NSURLSessionDataTask {
 
 // MARK: Override function
 
-extension CustomDataTask {
+extension URLDataTask {
     
     override func resume() {
         

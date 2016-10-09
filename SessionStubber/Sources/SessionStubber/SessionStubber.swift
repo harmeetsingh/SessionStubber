@@ -35,7 +35,7 @@ extension SessionStubber {
     
     override public func dataTaskWithURL(url: NSURL, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
         
-        return CustomDataTask(response: mockDataTaskResponse, completionHandler: completionHandler)
+        return URLDataTask(response: mockDataTaskResponse, completionHandler: completionHandler)
     }
 }
 
