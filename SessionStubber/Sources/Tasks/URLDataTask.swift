@@ -8,16 +8,16 @@
 
 import Foundation
 
-class URLDataTask: NSURLSessionDataTask {
+class URLDataTask: URLSessionDataTask {
     
     // MARK: Properties
     
-    private var customResponse: DataTaskResponse?
-    private let completionHandler: ((NSData?, NSURLResponse?, NSError?) -> Void)?
+    fileprivate var customResponse: DataTaskResponse?
+    fileprivate let completionHandler: ((Data?, URLResponse?, NSError?) -> Void)?
     
     // MARK: Lifeycle
     
-    init(response: DataTaskResponse?, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) {
+    init(response: DataTaskResponse?, completionHandler: @escaping (Data?, URLResponse?, NSError?) -> Void) {
         
         self.customResponse = response
         self.completionHandler = completionHandler
@@ -30,7 +30,7 @@ extension URLDataTask {
     
     override func resume() {
         
-        guard let completion = completionHandler, customResponse = customResponse else {
+        guard let completion = completionHandler, let customResponse = customResponse else {
             return
         }
         

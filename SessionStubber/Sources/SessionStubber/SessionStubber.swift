@@ -8,17 +8,19 @@
 
 import Foundation
 
-public class SessionStubber: NSURLSession {
+open class SessionStubber: URLSession {
     
     // MARK: Properties
     
-    private var mockDataTaskResponse: DataTaskResponse?
-    private var mockUploadTaskResponse: UploadTaskResponse?
-    private var mockDownloadTaskResponse: DownloadTaskResponse?
+    fileprivate var mockDataTaskResponse: DataTaskResponse?
+    fileprivate var mockUploadTaskResponse: UploadTaskResponse?
+    fileprivate var mockDownloadTaskResponse: DownloadTaskResponse?
+    
+    fileprivate var dataTaskResponse: ((Data?, URLResponse?, NSError?) -> Void)?
 
     // MARK: Override functions
     
-    override public class func sharedSession() -> SessionStubber {
+    override open class var shared: SessionStubber {
         
         return SessionStubber()
     }
@@ -28,14 +30,20 @@ public class SessionStubber: NSURLSession {
 
 extension SessionStubber {
     
-    override public func dataTaskWithRequest(request: NSURLRequest, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
+    override open func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
 
-        return NSURLSessionDataTask()
+        return URLSessionDataTask()
     }
     
-    override public func dataTaskWithURL(url: NSURL, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
+    override open func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         
-        return URLDataTask(response: mockDataTaskResponse, completionHandler: completionHandler)
+        if let mockDataTaskResponse = mockDataTaskResponse {
+         
+            return URLDataTask(response: mockDataTaskResponse, completionHandler: completionHandler)
+        }
+        
+        dataTaskResponse = completionHandler
+        return super.dataTask(with: url, completionHandler: dataTaskResponse! as! (Data?, URLResponse?, Error?) -> Void)
     }
 }
 
@@ -43,17 +51,17 @@ extension SessionStubber {
 
 extension SessionStubber {
     
-    public func stubDataTask(_withData data: NSData?, response: NSURLResponse?, error: NSError?) {
+    public func stubDataTask(_withData data: Data?, response: URLResponse?, error: NSError?) {
         
         mockDataTaskResponse = (data: data, response: response, error: error)
     }
 
-    public func stubDataTask(_withData data: NSData?) {
+    public func stubDataTask(_withData data: Data?) {
         
         mockDataTaskResponse = (data: data, response: nil, error: nil)
     }
     
-    public func stubDataTask(_withResponse response: NSURLResponse?) {
+    public func stubDataTask(_withResponse response: URLResponse?) {
         
         mockDataTaskResponse = (data: nil, response: response, error: nil)
     }
@@ -68,14 +76,14 @@ extension SessionStubber {
 
 extension SessionStubber {
     
-    override public func uploadTaskWithRequest(request: NSURLRequest, fromFile fileURL: NSURL, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionUploadTask {
+    override open func uploadTask(with request: URLRequest, fromFile fileURL: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionUploadTask {
         
-        return NSURLSessionUploadTask()        
+        return URLSessionUploadTask()        
     }
     
-    override public func uploadTaskWithRequest(request: NSURLRequest, fromData bodyData: NSData?, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionUploadTask {
+    override open func uploadTask(with request: URLRequest, from bodyData: Data?, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionUploadTask {
         
-        return NSURLSessionUploadTask()
+        return URLSessionUploadTask()
     }
 }
 
@@ -83,18 +91,18 @@ extension SessionStubber {
 
 extension SessionStubber {
 
-    override public func downloadTaskWithRequest(request: NSURLRequest, completionHandler: (NSURL?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDownloadTask  {
+    override open func downloadTask(with request: URLRequest, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask  {
         
-        return NSURLSessionDownloadTask()
+        return URLSessionDownloadTask()
     }
     
-    override public func downloadTaskWithURL(url: NSURL, completionHandler: (NSURL?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDownloadTask {
+    override open func downloadTask(with url: URL, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask {
         
-        return NSURLSessionDownloadTask()
+        return URLSessionDownloadTask()
     }
     
-    override public func downloadTaskWithResumeData(resumeData: NSData, completionHandler: (NSURL?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDownloadTask {
+    override open func downloadTask(withResumeData resumeData: Data, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask {
         
-        return NSURLSessionDownloadTask()
+        return URLSessionDownloadTask()
     }
 }
