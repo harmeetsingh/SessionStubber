@@ -19,7 +19,7 @@ class URLDataTaskTests: XCTestCase {
     
     func testURLDataTask_NotNil() {
         
-        let urlDataTask = URLDataTask(response: nil) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
+        let urlDataTask = URLDataTask(response: nil) { (data: Data?, response: URLResponse?, error: NSError?) in
         }
         
         XCTAssertNotNil(urlDataTask, "urlDataTask should not be nil")
@@ -32,32 +32,32 @@ extension URLDataTaskTests {
     
     func testURLDataTask_CustomResponseNotNil() {
         
-        let expectation = expectationWithDescription("testDataTaskWithURL_MockHTTPURLResponse_ResponseHeaderFieldsNotNil")
+        let expectation = self.expectation(description: "testDataTaskWithURL_MockHTTPURLResponse_ResponseHeaderFieldsNotNil")
         
-        URLDataTask(response: nil) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
+        URLDataTask(response: nil) { (data: Data?, response: URLResponse?, error: NSError?) in
         
             XCTAssertNotNil(data)
             expectation.fulfill()
         }.resume()
         
-        waitForExpectationsWithTimeout(0.2, handler: nil)
+        waitForExpectations(timeout: 0.2, handler: nil)
     }
 }
 
 extension URLDataTaskTests {
     
-    func randomData() -> NSData? {
+    func randomData() -> Data? {
         
         let dictionary = ["username" : "harmeet"]
-        return NSKeyedArchiver.archivedDataWithRootObject(dictionary)
+        return NSKeyedArchiver.archivedData(withRootObject: dictionary)
     }
     
-    func randomURLResponse() -> NSURLResponse? {
+    func randomURLResponse() -> URLResponse? {
         
-        guard let url = NSURL(string: "www.random.test.webstie.com/random") else {
+        guard let url = URL(string: "www.random.test.webstie.com/random") else {
             return nil
         }
-        return NSURLResponse(URL: url, MIMEType: "mp3", expectedContentLength: 20000, textEncodingName: "UTF-8")
+        return URLResponse(url: url, mimeType: "mp3", expectedContentLength: 20000, textEncodingName: "UTF-8")
     }
     
     func randomError() -> NSError? {
