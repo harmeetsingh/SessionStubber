@@ -75,7 +75,8 @@ extension SessionStubberTests {
 
             XCTAssertNotNil(responseData, "responseData should not be nil")
             expectation.fulfill()
-        }
+            
+        }.resume()
         
         waitForExpectations(timeout: 10, handler: nil)
     }
@@ -92,7 +93,7 @@ extension SessionStubberTests {
             XCTAssertNotNil(response, "response should not be nil")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -109,7 +110,7 @@ extension SessionStubberTests {
             XCTAssertNotNil(url, "url should not be nil")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -126,7 +127,7 @@ extension SessionStubberTests {
             XCTAssertEqual(urlString, "www.random.test.webstie.com/random", "url should be 'www.random.test.webstie.com/random'")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -143,7 +144,7 @@ extension SessionStubberTests {
             XCTAssertNotNil(mimeType, "url should not be nil")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -160,7 +161,7 @@ extension SessionStubberTests {
             XCTAssertEqual(mimeType, "mp3", "url should be 'mp3'")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -177,7 +178,7 @@ extension SessionStubberTests {
             XCTAssertEqual(expectedContentLength, 20000, "expectedContentLength should be 20000")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -194,7 +195,7 @@ extension SessionStubberTests {
             XCTAssertNotNil(textEncodingName, "textEncodingName should not be nil")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -211,7 +212,7 @@ extension SessionStubberTests {
             XCTAssertEqual(textEncodingName, "UTF-8", "url should be 'UTF-8'")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -230,7 +231,7 @@ extension SessionStubberTests {
             XCTAssertNotNil(url, "url should not be nil")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -247,7 +248,7 @@ extension SessionStubberTests {
             XCTAssertEqual(urlString, "www.random.test.webstie.com/random", "url should be 'www.random.test.webstie.com/random'")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -265,7 +266,7 @@ extension SessionStubberTests {
             XCTAssertEqual(statusCode, 200, "statusCode should be 200")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -283,7 +284,7 @@ extension SessionStubberTests {
             XCTAssertNotNil(headerFields, "headerFields should not be nil")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -301,7 +302,7 @@ extension SessionStubberTests {
             XCTAssertEqual(headerFieldsCount, 1, "headerFieldsCount should be 1")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -319,7 +320,7 @@ extension SessionStubberTests {
             XCTAssertEqual(mobileIdValue, "0987654321", "mobileIdValue should be 0987654321")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -336,7 +337,7 @@ extension SessionStubberTests {
             XCTAssertNotNil(data, "data should not be nil")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -358,7 +359,7 @@ extension SessionStubberTests {
             XCTAssertEqual(dictionaryCount, 1, "dictionaryCount should be 1")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -380,7 +381,7 @@ extension SessionStubberTests {
             XCTAssertEqual(usernameValue, "harmeet", "userbame should be harmeet")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -397,7 +398,7 @@ extension SessionStubberTests {
             XCTAssertNotNil(error, "error should not be nil")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -414,7 +415,8 @@ extension SessionStubberTests {
                 
             XCTAssertNotNil(errorDomain, "errorDomain should not be nil")
             expectation.fulfill()
-        }
+        
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -432,7 +434,7 @@ extension SessionStubberTests {
             XCTAssertEqual(errorDomain, "www.harmeetsingh.superError", "errorDomain should be 'www.harmeetsingh.superError'")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -450,7 +452,7 @@ extension SessionStubberTests {
             XCTAssertEqual(errorCode, -1000, "errorDomain should be -1000")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -468,7 +470,7 @@ extension SessionStubberTests {
             XCTAssertNotNil(errorUserInfo, "errorUserInfo should not be nil")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
@@ -486,7 +488,7 @@ extension SessionStubberTests {
             XCTAssertEqual(userInfoCount, 1, "userInfoCount should be 1")
             expectation.fulfill()
             
-        }
+        }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
