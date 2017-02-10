@@ -21,6 +21,7 @@ open class SessionStubber: URLSession {
     // MARK: Override functions
     
     override open class var shared: SessionStubber {
+        
         return SessionStubber()
     }
 }
@@ -54,22 +55,22 @@ extension SessionStubber {
 
 extension SessionStubber {
     
-    public func stubDataTask(_withData data: Data?, response: URLResponse?, error: NSError?) {
-        
+    public func stubDataTask(with data: Data?, response: URLResponse?, error: NSError?) {
+
         mockDataTaskResponse = (data: data, response: response, error: error)
     }
 
-    public func stubDataTask(_withData data: Data?) {
+    public func stubDataTask(withData data: Data?) {
         
         mockDataTaskResponse = (data: data, response: nil, error: nil)
     }
     
-    public func stubDataTask(_withResponse response: URLResponse?) {
+    public func stubDataTask(withResponse response: URLResponse?) {
         
         mockDataTaskResponse = (data: nil, response: response, error: nil)
     }
     
-    public func stubDataTask(_withError error: NSError?) {
+    public func stubDataTask(withError error: NSError?) {
         
         mockDataTaskResponse = (data: nil, response: nil, error: error)
     }
