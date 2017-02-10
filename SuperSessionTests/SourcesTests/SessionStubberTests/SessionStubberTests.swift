@@ -60,26 +60,6 @@ class SessionStubberTests: XCTestCase {
 // MARK: Data Task Tests
 
 extension SessionStubberTests {
-    
-    // MARK: Mocks not set
-    
-    func testDataTaskWithURL_MocksNotSet_RequestPerformed() {
-        
-        let expectation = self.expectation(description: "testDataTaskWithURL_MocksNotSet_RequestPerformed")
-        
-        guard let url = URL(string: "http://beta.json-generator.com/api/json/get/EybMx5m0Z") else {
-            return XCTFail()
-        }
-        
-        _ = sessionStubber.dataTask(with: url) { (responseData: Data?, response: URLResponse?, responseError: Error?) in
-
-            XCTAssertNotNil(responseData, "responseData should not be nil")
-            expectation.fulfill()
-            
-        }.resume()
-        
-        waitForExpectations(timeout: 10, handler: nil)
-    }
 
     // MARK: Mocking Response
     
