@@ -21,7 +21,6 @@ open class SessionStubber: URLSession {
     // MARK: Override functions
     
     override open class var shared: SessionStubber {
-        
         return SessionStubber()
     }
 }
@@ -32,19 +31,13 @@ extension SessionStubber {
     
     override open func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
 
-        return URLSessionDataTask()
-    }
-    
-    override open func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        
         if let mockDataTaskResponse = mockDataTaskResponse {
-         
-            return URLDataTask(response: mockDataTaskResponse, completionHandler: completionHandler)
+            return DataTask(response: mockDataTaskResponse, completionHandler: completionHandler)
         }
         
-        dataTaskResponse = completionHandler
-        return super.dataTask(with: url, completionHandler: dataTaskResponse! as! (Data?, URLResponse?, Error?) -> Void)
+        super.dataTask(with: request, completionHandler: completionHandler)
     }
+    
 }
 
 // MARK: Data Task Stubs

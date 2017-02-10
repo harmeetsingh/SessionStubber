@@ -8,14 +8,14 @@
 
 import Foundation
 
-class URLDataTask: URLSessionDataTask {
+class DataTask: URLSessionDataTask {
     
     // MARK: Properties
     
     fileprivate var customResponse: DataTaskResponse?
     fileprivate let completionHandler: ((Data?, URLResponse?, NSError?) -> Void)?
     
-    // MARK: Lifeycle
+    // MARK: Instantiation
     
     init(response: DataTaskResponse?, completionHandler: @escaping (Data?, URLResponse?, NSError?) -> Void) {
         
@@ -26,14 +26,19 @@ class URLDataTask: URLSessionDataTask {
 
 // MARK: Override function
 
-extension URLDataTask {
+extension DataTask {
     
     override func resume() {
         
-        guard let completion = completionHandler, let customResponse = customResponse else {
-            return
+        if let completionHandler = completionHandler {
+            
+            let data = customResponse?.data
+            let response = customResponse?.response
+            let error = customResponse?.error
+            
+            return completionHandler(data, response, error)
         }
         
-        completion(customResponse.data, customResponse.response, customResponse.error)
+        super.resume()
     }
 }
