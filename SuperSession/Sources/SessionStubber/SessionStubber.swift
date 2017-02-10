@@ -32,12 +32,22 @@ extension SessionStubber {
     override open func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
 
         if let mockDataTaskResponse = mockDataTaskResponse {
+            
             return DataTask(response: mockDataTaskResponse, completionHandler: completionHandler)
         }
         
         return super.dataTask(with: request, completionHandler: completionHandler)
     }
     
+    override open func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Swift.Void) -> URLSessionDataTask {
+        
+        if let mockDataTaskResponse = mockDataTaskResponse {
+            
+            return DataTask(response: mockDataTaskResponse, completionHandler: completionHandler)
+        }
+        
+        return super.dataTask(with: url, completionHandler: completionHandler)
+    }
 }
 
 // MARK: Data Task Stubs
