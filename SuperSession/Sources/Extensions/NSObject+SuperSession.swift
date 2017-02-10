@@ -1,5 +1,5 @@
 //
-//  NSObject+SessionStubber.swift
+//  NSObject+SuperSession
 //  SessionStubber
 //
 //  Created by Harmeet Singh on 19/09/2016.
