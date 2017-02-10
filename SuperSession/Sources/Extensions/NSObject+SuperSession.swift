@@ -1,6 +1,6 @@
 //
 //  NSObject+SuperSession
-//  SessionStubber
+//  SuperSession
 //
 //  Created by Harmeet Singh on 19/09/2016.
 //  Copyright © 2016 HarmeetSingh. All rights reserved.

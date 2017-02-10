@@ -1,6 +1,6 @@
 //
 //  CustomURLProtocol.swift
-//  SessionStubber
+//  SuperSession
 //
 //  Created by Harmeet Singh on 18/09/2016.
 //  Copyright © 2016 HarmeetSingh. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class SessionStubber: URLSession {
+open class SuperSession: URLSession {
     
     // MARK: Properties
     
@@ -20,15 +20,15 @@ open class SessionStubber: URLSession {
 
     // MARK: Override functions
     
-    override open class var shared: SessionStubber {
+    override open class var shared: SuperSession {
         
-        return SessionStubber()
+        return SuperSession()
     }
 }
 
 // MARK: Data Tasks
 
-extension SessionStubber {
+extension SuperSession {
     
     override open func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
 
@@ -53,7 +53,7 @@ extension SessionStubber {
 
 // MARK: Data Task Stubs
 
-extension SessionStubber {
+extension SuperSession {
     
     public func stubDataTask(with data: Data?, response: URLResponse?, error: NSError?) {
 
@@ -78,7 +78,7 @@ extension SessionStubber {
 
 // MARK: Upload Tasks
 
-extension SessionStubber {
+extension SuperSession {
     
     override open func uploadTask(with request: URLRequest, fromFile fileURL: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionUploadTask {
         
@@ -93,7 +93,7 @@ extension SessionStubber {
 
 // MARK: Download Tasks
 
-extension SessionStubber {
+extension SuperSession {
 
     override open func downloadTask(with request: URLRequest, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask  {
         

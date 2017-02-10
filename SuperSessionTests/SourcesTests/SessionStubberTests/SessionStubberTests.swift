@@ -1,6 +1,6 @@
 //
-//  SessionStubberTests.swift
-//  SessionStubberTests
+//  SuperSessionTests.swift
+//  SuperSessionTests
 //
 //  Created by Harmeet Singh on 18/09/2016.
 //  Copyright © 2016 HarmeetSingh. All rights reserved.
@@ -8,11 +8,11 @@
 
 import XCTest
 
-class SessionStubberTests: XCTestCase {
+class SuperSessionTests: XCTestCase {
 
     // MARK: Properties
     
-    var sessionStubber = SessionStubber.shared
+    var superSession = SuperSession.shared
     
     let randomURL: URL = {
         
@@ -51,24 +51,24 @@ class SessionStubberTests: XCTestCase {
     
     // MARK: Lifecycle
     
-    func testSessionStubber_NotNil(){
+    func testSuperSession_NotNil(){
         
-        XCTAssertNotNil(sessionStubber, "sessionStubber should not be nil")
+        XCTAssertNotNil(superSession, "SuperSession should not be nil")
     }
 }
 
 // MARK: Data Task Tests
 
-extension SessionStubberTests {
+extension SuperSessionTests {
 
     // MARK: Mocking Response
     
     func testDataTaskWithURL_MockURLResponse_ResponseNotNil() {
     
         let expectation = self.expectation(description: "testDataTaskWithURL_MockURLResponse_ResponseNotNil")
-        sessionStubber.stubDataTask(withResponse: randomURLResponse)
+        superSession.stubDataTask(withResponse: randomURLResponse)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
 
             XCTAssertNotNil(response, "response should not be nil")
             expectation.fulfill()
@@ -81,9 +81,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockURLResponse_ResponseURLNotNil() {
      
         let expectation = self.expectation(description: "testDataTaskWithURL_MockURLResponse_ResponseURLNotNil")
-        sessionStubber.stubDataTask(withResponse: randomURLResponse)
+        superSession.stubDataTask(withResponse: randomURLResponse)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let url = response?.url
             
@@ -98,9 +98,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockURLResponse_ResponseURLCorrectValue() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockURLResponse_ResponseURLCorrectValue")
-        sessionStubber.stubDataTask(withResponse: randomURLResponse)
+        superSession.stubDataTask(withResponse: randomURLResponse)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let urlString = response?.url?.absoluteString
             
@@ -115,9 +115,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockURLResponse_ResponseMIMETypeNotNil() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockURLResponse_ResponseMIMETypeNotNil")
-        sessionStubber.stubDataTask(withResponse: randomURLResponse)
+        superSession.stubDataTask(withResponse: randomURLResponse)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let mimeType = response?.mimeType
             
@@ -132,9 +132,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockURLResponse_ResponseMIMETypeCorrectValue() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockURLResponse_ResponseMIMETypeCorrectValue")
-        sessionStubber.stubDataTask(withResponse: randomURLResponse)
+        superSession.stubDataTask(withResponse: randomURLResponse)
         
-        _ = sessionStubber.dataTask(with: randomURL){ (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL){ (data: Data?, response: URLResponse?, error: Error?) in
             
             let mimeType = response?.mimeType
             
@@ -149,9 +149,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockURLResponse_ResponseExpectedContentLengthCorrectValue() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockURLResponse_ResponseExpectedContentLengthCorrectValue")
-        sessionStubber.stubDataTask(withResponse: randomURLResponse)
+        superSession.stubDataTask(withResponse: randomURLResponse)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let expectedContentLength = response?.expectedContentLength
             
@@ -166,9 +166,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockURLResponse_ResponseTextEncodingNameNotNil() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockURLResponse_ResponseTextEncodingNameNotNil")
-        sessionStubber.stubDataTask(withResponse: randomURLResponse)
+        superSession.stubDataTask(withResponse: randomURLResponse)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let textEncodingName = response?.textEncodingName
             
@@ -183,9 +183,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockURLResponse_ResponseTextEncodingNameCorrectValue() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockURLResponse_ResponseTextEncodingNameCorrectValue")
-        sessionStubber.stubDataTask(withResponse: randomURLResponse)
+        superSession.stubDataTask(withResponse: randomURLResponse)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let textEncodingName = response?.textEncodingName
             
@@ -202,9 +202,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockHTTPURLResponse_ResponseURLNotNil() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockHTTPURLResponse_ResponseURLNotNil")
-        sessionStubber.stubDataTask(withResponse: randomURLResponse)
+        superSession.stubDataTask(withResponse: randomURLResponse)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let url = response?.url
             
@@ -219,9 +219,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockHTTPURLResponse_ResponseURLCorrectValue() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockHTTPURLResponse_ResponseURLCorrectValue")
-        sessionStubber.stubDataTask(withResponse: randomURLResponse)
+        superSession.stubDataTask(withResponse: randomURLResponse)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let urlString = response?.url?.absoluteString
             
@@ -236,9 +236,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockHTTPURLResponse_ResponseStatusCodeCorrectValue() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockHTTPURLResponse_ResponseStatusCodeCorrectValue")
-        sessionStubber.stubDataTask(withResponse: randomHTTPURLResponse)
+        superSession.stubDataTask(withResponse: randomHTTPURLResponse)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let httpURLresponse = response as? HTTPURLResponse
             let statusCode = httpURLresponse?.statusCode
@@ -254,9 +254,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockHTTPURLResponse_ResponseHeaderFieldsNotNil() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockHTTPURLResponse_ResponseHeaderFieldsNotNil")
-        sessionStubber.stubDataTask(withResponse: randomHTTPURLResponse)
+        superSession.stubDataTask(withResponse: randomHTTPURLResponse)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let httpURLResponse = response as? HTTPURLResponse
             let headerFields = httpURLResponse?.allHeaderFields
@@ -272,9 +272,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockHTTPURLResponse_ResponseHeaderFieldsCorrectCount() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockError_ErrorUserInfoCorrectCount")
-        sessionStubber.stubDataTask(withResponse: randomHTTPURLResponse)
+        superSession.stubDataTask(withResponse: randomHTTPURLResponse)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let httpURLResponse = response as? HTTPURLResponse
             let headerFieldsCount = httpURLResponse?.allHeaderFields.count
@@ -290,9 +290,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockHTTPURLResponse_ResponseHeaderFieldsCorrectValue() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockHTTPURLResponse_ResponseHeaderFieldsCorrectValue")
-        sessionStubber.stubDataTask(withResponse: randomHTTPURLResponse)
+        superSession.stubDataTask(withResponse: randomHTTPURLResponse)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let httpURLResponse = response as? HTTPURLResponse
             let mobileIdValue = httpURLResponse?.allHeaderFields["mobileId"] as? String
@@ -310,9 +310,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockData_DataNotNil() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockData_DataNotNil")
-        sessionStubber.stubDataTask(withData: randomData)
+        superSession.stubDataTask(withData: randomData)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             XCTAssertNotNil(data, "data should not be nil")
             expectation.fulfill()
@@ -325,9 +325,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockData_DictionaryCorrectCount() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockData_DictionaryCorrectCount")
-        sessionStubber.stubDataTask(withData: randomData)
+        superSession.stubDataTask(withData: randomData)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             guard let data = data else {
                 return XCTFail()
@@ -347,9 +347,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockData_DataCorrectValue() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockData_DataCorrectValue")
-        sessionStubber.stubDataTask(withData: randomData)
+        superSession.stubDataTask(withData: randomData)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             guard let data = data else {
                 return XCTFail()
@@ -371,9 +371,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockError_ErrorNotNil() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockError_ErrorNotNil")
-        sessionStubber.stubDataTask(withError: randomError)
+        superSession.stubDataTask(withError: randomError)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             XCTAssertNotNil(error, "error should not be nil")
             expectation.fulfill()
@@ -386,9 +386,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockError_ErrorDomainNotNil() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockError_ErrorDomainNotNil")
-        sessionStubber.stubDataTask(withError: randomError)
+        superSession.stubDataTask(withError: randomError)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let responseError = error as? NSError
             let errorDomain = responseError?.domain
@@ -404,9 +404,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockError_ErrorDomainCorrectValue() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockError_ErrorDomainCorrectValue")
-        sessionStubber.stubDataTask(withError: randomError)
+        superSession.stubDataTask(withError: randomError)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let responseError = error as? NSError
             let errorDomain = responseError?.domain
@@ -422,9 +422,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockError_ErrorCodeCorrectValue() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockError_ErrorCodeCorrectValue")
-        sessionStubber.stubDataTask(withError: randomError)
+        superSession.stubDataTask(withError: randomError)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let responseError = error as? NSError
             let errorCode = responseError?.code
@@ -440,9 +440,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockError_ErrorUserInfoNotNil() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockError_ErrorUserInfoNotNil")
-        sessionStubber.stubDataTask(withError: randomError)
+        superSession.stubDataTask(withError: randomError)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let responseError = error as? NSError
             let errorUserInfo = responseError?.userInfo
@@ -458,9 +458,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockError_ErrorUserInfoCorrectCount() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockError_ErrorUserInfoCorrectCount")
-        sessionStubber.stubDataTask(withError: randomError)
+        superSession.stubDataTask(withError: randomError)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let responseError = error as? NSError
             let userInfoCount = responseError?.userInfo.count
@@ -476,9 +476,9 @@ extension SessionStubberTests {
     func testDataTaskWithURL_MockError_ErrorUserInfoCorrectValue() {
         
         let expectation = self.expectation(description: "testDataTaskWithURL_MockError_ErrorUserInfoCorrectValue")
-        sessionStubber.stubDataTask(withError: randomError)
+        superSession.stubDataTask(withError: randomError)
         
-        _ = sessionStubber.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
             
             let responseError = error as? NSError
             let profileIdValue = responseError?.userInfo["profileId"] as? String
