@@ -35,7 +35,7 @@ extension SessionStubber {
             return DataTask(response: mockDataTaskResponse, completionHandler: completionHandler)
         }
         
-        super.dataTask(with: request, completionHandler: completionHandler)
+        return super.dataTask(with: request, completionHandler: completionHandler)
     }
     
 }
