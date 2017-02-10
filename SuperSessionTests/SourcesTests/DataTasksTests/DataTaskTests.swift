@@ -9,7 +9,7 @@
 import Foundation
 import XCTest
 
-class URLDataTaskTests: XCTestCase {
+class DataTaskTests: XCTestCase {
     
     // MARK: Properties
     
@@ -19,7 +19,7 @@ class URLDataTaskTests: XCTestCase {
     
     func testURLDataTask_NotNil() {
         
-        let urlDataTask = URLDataTask(response: nil) { (data: Data?, response: URLResponse?, error: NSError?) in
+        let urlDataTask = DataTask(response: nil) { (data: Data?, response: URLResponse?, error: NSError?) in
         }
         
         XCTAssertNotNil(urlDataTask, "urlDataTask should not be nil")
@@ -28,23 +28,24 @@ class URLDataTaskTests: XCTestCase {
 
 // MARK: Completion Handler Response
 
-extension URLDataTaskTests {
+extension DataTaskTests {
     
-    func testURLDataTask_CustomResponseNotNil() {
+    func testDataTask_CustomResponseNotNil() {
         
-        let expectation = self.expectation(description: "testDataTaskWithURL_MockHTTPURLResponse_ResponseHeaderFieldsNotNil")
+        let expectation = self.expectation(description: "testDataTask_CustomResponseNotNil")
         
-        URLDataTask(response: nil) { (data: Data?, response: URLResponse?, error: NSError?) in
+        DataTask(response: nil) { (data: Data?, response: URLResponse?, error: NSError?) in
         
             XCTAssertNotNil(data)
             expectation.fulfill()
+            
         }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
 }
 
-extension URLDataTaskTests {
+extension DataTaskTests {
     
     func randomData() -> Data? {
         
