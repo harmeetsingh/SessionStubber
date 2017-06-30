@@ -49,7 +49,16 @@ class SuperSessionTests: XCTestCase {
         return NSError(domain: "www.harmeetsingh.superError", code: -1000, userInfo: ["profileId" : "1234"])
     }()
     
-    // MARK: Lifecycle
+//    let randomRequest: URLRequest = {
+//        
+//        guard let url = URL(string: "www.random.test.webstie.com/random") else {
+//            return NSURLRequest() as URLRequest
+//        }
+//       
+//        return URLRequest(url: url, cachePolicy: nil, timeoutInterval: 60)
+//    }()
+    
+    // MARK: Instantiation
     
     func testSuperSession_NotNil(){
         
@@ -57,7 +66,31 @@ class SuperSessionTests: XCTestCase {
     }
 }
 
-// MARK: Data Task Tests
+// MARK: Data Task With Request
+
+extension SuperSessionTests {
+    
+    func testDataTaskWithRequest_MockURLResponse_ResponseNotNil() {
+//        
+//        let expectation = self.expectation(description: "testDataTaskWithRequest_MockURLResponse_ResponseNotNil")
+//        superSession.stubDataTask(withResponse: randomURLResponse)
+//        
+//        superSession.dataTask(with: <#T##URLRequest#>, completionHandler: <#T##(Data?, URLResponse?, Error?) -> Void#>)
+//        
+//        _ = superSession.dataTask(with: randomURL) { (data: Data?, response: URLResponse?, error: Error?) in
+//            
+//            XCTAssertNotNil(response, "response should not be nil")
+//            expectation.fulfill()
+//            
+//            }.resume()
+//        
+//        waitForExpectations(timeout: 0.2, handler: nil)
+    }
+}
+
+
+
+// MARK: Data Task With URL
 
 extension SuperSessionTests {
 

@@ -13,14 +13,31 @@ class DataTaskTests: XCTestCase {
     
     // MARK: Properties
     
-   // let mockDataTaskResponse: DataTaskResponse = (data: randomData(), response: randomURLResponse(), error: randomError())
+    let randomData: Data? = {
     
-    // MARK: Lifecycle
+        let dictionary = ["username" : "harmeet"]
+        return NSKeyedArchiver.archivedData(withRootObject: dictionary)
+    }()
+    
+    let randomURLResponse: URLResponse? = {
+        
+        guard let url = URL(string: "www.random.test.webstie.com/random") else {
+            return nil
+        }
+        
+        return URLResponse(url: url, mimeType: "mp3", expectedContentLength: 20000, textEncodingName: "UTF-8")
+    }()
+    
+    let randomError: NSError? = {
+        
+        return NSError(domain: "www.harmeetsingh.superError", code: -1000, userInfo: ["profileId" : "1234"])
+    }()
+    
+    // MARK: Instantiation
     
     func testURLDataTask_NotNil() {
         
-        let urlDataTask = DataTask(response: nil) { (data: Data?, response: URLResponse?, error: NSError?) in
-        }
+        let urlDataTask = DataTask(response: nil) { (data: Data?, response: URLResponse?, error: NSError?) in }
         
         XCTAssertNotNil(urlDataTask, "urlDataTask should not be nil")
     }
@@ -30,39 +47,45 @@ class DataTaskTests: XCTestCase {
 
 extension DataTaskTests {
     
-    func testDataTask_CustomResponseNotNil() {
+    func testDataTask_NilResponse_NilData() {
         
-        let expectation = self.expectation(description: "testDataTask_CustomResponseNotNil")
+        let expectation = self.expectation(description: "testDataTask_NilResponse_NilData")
         
         DataTask(response: nil) { (data: Data?, response: URLResponse?, error: NSError?) in
         
-            XCTAssertNotNil(data)
+            XCTAssertNil(data)
             expectation.fulfill()
             
         }.resume()
         
         waitForExpectations(timeout: 0.2, handler: nil)
     }
-}
+    
+    func testDataTask_NilResponse_NilURLResponse() {
+        
+        let expectation = self.expectation(description: "testDataTask_NilResponse_NilURLResponse")
+        
+        DataTask(response: nil) { (data: Data?, response: URLResponse?, error: NSError?) in
+            
+            XCTAssertNil(response)
+            expectation.fulfill()
+            
+            }.resume()
+        
+        waitForExpectations(timeout: 0.2, handler: nil)
+    }
 
-extension DataTaskTests {
-    
-    func randomData() -> Data? {
+    func testDataTask_NilResponse_NilError() {
         
-        let dictionary = ["username" : "harmeet"]
-        return NSKeyedArchiver.archivedData(withRootObject: dictionary)
-    }
-    
-    func randomURLResponse() -> URLResponse? {
+        let expectation = self.expectation(description: "testDataTask_NilResponse_NilError")
         
-        guard let url = URL(string: "www.random.test.webstie.com/random") else {
-            return nil
-        }
-        return URLResponse(url: url, mimeType: "mp3", expectedContentLength: 20000, textEncodingName: "UTF-8")
-    }
-    
-    func randomError() -> NSError? {
+        DataTask(response: nil) { (data: Data?, response: URLResponse?, error: NSError?) in
+            
+            XCTAssertNil(error)
+            expectation.fulfill()
+            
+            }.resume()
         
-        return NSError(domain: "www.harmeetsingh.superError", code: -1000, userInfo: ["profileId" : "1234"])
+        waitForExpectations(timeout: 0.2, handler: nil)
     }
 }
