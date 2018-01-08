@@ -15,8 +15,6 @@ open class SuperSession: URLSession {
     fileprivate var mockDataTaskResponse: DataTaskResponse?
     fileprivate var mockUploadTaskResponse: UploadTaskResponse?
     fileprivate var mockDownloadTaskResponse: DownloadTaskResponse?
-    
-    fileprivate var dataTaskResponse: ((Data?, URLResponse?, NSError?) -> Void)?
 
     // MARK: Override functions
     
