@@ -14,13 +14,13 @@
 		5A355E2D1DAAD5BA0054286B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A355E2B1DAAD5BA0054286B /* LaunchScreen.storyboard */; };
 		5A56B59B1D8F012700DB6EB3 /* SessionStubber.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A56B59A1D8F012700DB6EB3 /* SessionStubber.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5A56B5A21D8F012700DB6EB3 /* SuperSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A56B5971D8F012700DB6EB3 /* SuperSession.framework */; };
-		5A56B5B21D8F01DD00DB6EB3 /* SessionStubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5B11D8F01DD00DB6EB3 /* SessionStubber.swift */; };
+		5A56B5B21D8F01DD00DB6EB3 /* SuperSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5B11D8F01DD00DB6EB3 /* SuperSession.swift */; };
 		5A56B5B41D8F06EF00DB6EB3 /* DataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5B31D8F06EF00DB6EB3 /* DataTask.swift */; };
 		5A56B5B81D8F158300DB6EB3 /* DataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5B31D8F06EF00DB6EB3 /* DataTask.swift */; };
-		5A56B5BE1D8F32D700DB6EB3 /* SessionStubberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5BD1D8F32D700DB6EB3 /* SessionStubberTests.swift */; };
+		5A56B5BE1D8F32D700DB6EB3 /* SuperSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5BD1D8F32D700DB6EB3 /* SuperSessionTests.swift */; };
 		5AB44AF41D8FEE6D0095A2E2 /* NSObject+SuperSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB44AF31D8FEE6D0095A2E2 /* NSObject+SuperSession.swift */; };
 		5AB44AF51D9000230095A2E2 /* NSObject+SuperSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB44AF31D8FEE6D0095A2E2 /* NSObject+SuperSession.swift */; };
-		5AB44AF61D9008350095A2E2 /* SessionStubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5B11D8F01DD00DB6EB3 /* SessionStubber.swift */; };
+		5AB44AF61D9008350095A2E2 /* SuperSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56B5B11D8F01DD00DB6EB3 /* SuperSession.swift */; };
 		5AE1F6FF1D913CBA006F31A9 /* DataTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE1F6FE1D913CBA006F31A9 /* DataTaskTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,9 +47,9 @@
 		5A56B59C1D8F012700DB6EB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A56B5A11D8F012700DB6EB3 /* SuperSessionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuperSessionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A56B5A81D8F012700DB6EB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5A56B5B11D8F01DD00DB6EB3 /* SessionStubber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SessionStubber.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		5A56B5B11D8F01DD00DB6EB3 /* SuperSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SuperSession.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5A56B5B31D8F06EF00DB6EB3 /* DataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DataTask.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		5A56B5BD1D8F32D700DB6EB3 /* SessionStubberTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SessionStubberTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		5A56B5BD1D8F32D700DB6EB3 /* SuperSessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SuperSessionTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5AB44AF31D8FEE6D0095A2E2 /* NSObject+SuperSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSObject+SuperSession.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5AE1F6FE1D913CBA006F31A9 /* DataTaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DataTaskTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
@@ -145,7 +145,7 @@
 			children = (
 				5A56B5BC1D8F26E700DB6EB3 /* DataTasks */,
 				5AB44AF21D8FEE540095A2E2 /* Extensions */,
-				5A56B5BB1D8F26E300DB6EB3 /* SessionStubber */,
+				5A56B5BB1D8F26E300DB6EB3 /* SuperSession */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -154,7 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				5AE1F6FD1D913C8A006F31A9 /* DataTasksTests */,
-				5AE1F6FC1D913C77006F31A9 /* SessionStubberTests */,
+				5AE1F6FC1D913C77006F31A9 /* SuperSessionTests */,
 			);
 			path = SourcesTests;
 			sourceTree = "<group>";
@@ -167,12 +167,12 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5A56B5BB1D8F26E300DB6EB3 /* SessionStubber */ = {
+		5A56B5BB1D8F26E300DB6EB3 /* SuperSession */ = {
 			isa = PBXGroup;
 			children = (
-				5A56B5B11D8F01DD00DB6EB3 /* SessionStubber.swift */,
+				5A56B5B11D8F01DD00DB6EB3 /* SuperSession.swift */,
 			);
-			path = SessionStubber;
+			path = SuperSession;
 			sourceTree = "<group>";
 		};
 		5A56B5BC1D8F26E700DB6EB3 /* DataTasks */ = {
@@ -191,12 +191,12 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		5AE1F6FC1D913C77006F31A9 /* SessionStubberTests */ = {
+		5AE1F6FC1D913C77006F31A9 /* SuperSessionTests */ = {
 			isa = PBXGroup;
 			children = (
-				5A56B5BD1D8F32D700DB6EB3 /* SessionStubberTests.swift */,
+				5A56B5BD1D8F32D700DB6EB3 /* SuperSessionTests.swift */,
 			);
-			path = SessionStubberTests;
+			path = SuperSessionTests;
 			sourceTree = "<group>";
 		};
 		5AE1F6FD1D913C8A006F31A9 /* DataTasksTests */ = {
@@ -361,7 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A56B5B41D8F06EF00DB6EB3 /* DataTask.swift in Sources */,
-				5A56B5B21D8F01DD00DB6EB3 /* SessionStubber.swift in Sources */,
+				5A56B5B21D8F01DD00DB6EB3 /* SuperSession.swift in Sources */,
 				5AB44AF41D8FEE6D0095A2E2 /* NSObject+SuperSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,9 +372,9 @@
 			files = (
 				5A56B5B81D8F158300DB6EB3 /* DataTask.swift in Sources */,
 				5AB44AF51D9000230095A2E2 /* NSObject+SuperSession.swift in Sources */,
-				5AB44AF61D9008350095A2E2 /* SessionStubber.swift in Sources */,
+				5AB44AF61D9008350095A2E2 /* SuperSession.swift in Sources */,
 				5AE1F6FF1D913CBA006F31A9 /* DataTaskTests.swift in Sources */,
-				5A56B5BE1D8F32D700DB6EB3 /* SessionStubberTests.swift in Sources */,
+				5A56B5BE1D8F32D700DB6EB3 /* SuperSessionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
